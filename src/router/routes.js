@@ -2,7 +2,7 @@ import { createWebHashHistory, createRouter } from "vue-router";
 import store from '../store/index'
 const UserList = () => import("../pages/users/UserList.vue");
 const Login = () => import("../components/Login.vue");
-const Layout = () => import("../pages/layout.vue");
+const Layout = () => import("../pages/Layout.vue");
 
 const routes = [
   {
