@@ -57,8 +57,7 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   if (to.meta.isAuth && !store.state.auth.isAuthenticated) {
     return {
-      path: "/login",
-      query: { redirect: to.fullPath },
+      path: "/login"
     };
   }
 });
