@@ -1,6 +1,7 @@
 import { createWebHashHistory, createRouter } from "vue-router";
 import store from '../store/index'
 const UserList = () => import("../pages/users/UserList.vue");
+const RequestList = () => import("../pages/requests/RequestList.vue");
 const Login = () => import("../components/Login.vue");
 const Layout = () => import("../pages/Layout.vue");
 
@@ -17,6 +18,14 @@ const routes = [
         path: "/users",
         name: "users",
         component: UserList,
+        meta: {
+          isAuth: true,
+        },
+      },
+      {
+        path: "/requests",
+        name: "requests",
+        component: RequestList,
         meta: {
           isAuth: true,
         },
