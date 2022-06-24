@@ -183,51 +183,59 @@ export default {
 }
 </script>
 <template>
-    <div>
-        <div class="flex flex-wrap gap-3 mb-8">
+    <div class="">
+        <div class="grid cards-grid  grid-cols-[repeat(auto-fill,_minmax(23%,_1fr))] gap-[30px] mb-8 mt-[50px]">
 
-            <div class="card w-96  bg-base-100 shadow-md">
+            <div class="card">
                 <div class="card-body">
-                     <div class="grid grid-cols-3 gap-4">
-                         <div class="col-span-1"><i class="fa-solid fa-users text-7xl "></i></div>
+                     <div class="flex  gap-6 items-center">
+                         <div class="col-span-1">
+                             <img src="../../assets/userIcon.svg" alt="">
+                         </div>
                          <div class="col-span-1"> 
-                             <h2 class="card-title">200</h2>
+                             <h2 class="card-title mb-0">200</h2>
                             <p>Total Users</p>
                         </div>
                      </div>
                    
                 </div>
             </div>
-            <div class="card w-96  bg-base-100 shadow-md">
+            <div class="card">
                 <div class="card-body">
-                     <div class="grid grid-cols-3 gap-4">
-                         <div class="col-span-1"><i class="fa-solid fa-users text-7xl "></i></div>
+                     <div class="flex gap-6 items-center">
+                         <div class="col-span-1">
+                             <img src="../../assets/userIcon.svg" alt="">
+                         </div>
                          <div class="col-span-1"> 
-                             <h2 class="card-title">200</h2>
+                             <h2 class="card-title mb-0">200</h2>
                             <p>Total Users</p>
                         </div>
                      </div>
                    
                 </div>
             </div>
-            <div class="card w-96  bg-base-100 shadow-md">
+            <div class="card">
                 <div class="card-body">
-                     <div class="grid grid-cols-3 gap-4">
-                         <div class="col-span-1"><i class="fa-solid fa-users text-7xl "></i></div>
+                     <div class="flex gap-6 items-center">
+                         <div class="col-span-1">
+                              <img src="../../assets/userIcon.svg" alt="">
+                         </div>
                          <div class="col-span-1"> 
-                             <h2 class="card-title">200</h2>
+                             <h2 class="card-title mb-0">200</h2>
                             <p>Total Users</p>
                         </div>
                      </div>
                    
                 </div>
             </div>
-            <div class="card w-96  bg-base-100 shadow-md">
+            <div class="card">
                 <div class="card-body">
-                     <div class="grid grid-cols-3 gap-4">
-                         <div class="col-span-1"><i class="fa-solid fa-users text-7xl "></i></div>
+                     <div class="flex gap-6 items-center">
+                         <div class="col-span-1">
+                             <img src="../../assets/userIcon.svg" alt="">
+                         </div>
                          <div class="col-span-1"> 
-                             <h2 class="card-title">200</h2>
+                             <h2 class="card-title mb-0">200</h2>
                             <p>Total Users</p>
                         </div>
                      </div>
@@ -235,7 +243,7 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-10 gap-4 mb-8">
+        <div class="grid grid-cols-10 gap-6 items-center mb-8">
             <div class="col-span-8"></div>
             <div class="flex flex-row gap-3">
                 <button class="btn btn-error space-x-1" @click="deleteSelected">Delete</button>
@@ -281,7 +289,9 @@ export default {
                         <td>{{renderSuspended(row?.suspended)}}</td>
                         <td>{{ renderReasons(row?.reasonForJoining) }}</td>
                         <td>
-                            <button class="btn btn-outline" @click="showRecord(row)">View</button>
+                            <button class="btn btn-ghost btn-circle " @click="showRecord(row)">
+                                <img src="../../assets/eye.svg" alt="">
+                            </button>
                         </td>
 
                     </tr>
@@ -306,7 +316,7 @@ export default {
 
                     <h3 class="font-bold text-lg">{{ userData.bio }}</h3>
 
-                    <div class="flex flex-wrap gap-4">
+                    <div class="flex flex-wrap gap-6 items-center">
 
 
                         <div class="form-control w-[48%]">
@@ -400,3 +410,22 @@ export default {
     </div>
 </template>
 
+<style lang="scss" scoped>
+.cards-grid {
+  .card {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background-color: #fff;
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 30px;
+      ~ p {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+</style>

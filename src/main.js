@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/routes';
-import './style.css'
+import './style.scss'
 
 
 import VueSweetalert2 from 'vue-sweetalert2';

@@ -16,6 +16,7 @@
     "daisyui": "^1.25.4",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",
+    "sass": "^1.53.0",
     "vue": "^3.2.16",
     "vue-router": "^4.0.14",
     "vue-sweetalert2": "^5.0.5",
