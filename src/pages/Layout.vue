@@ -20,9 +20,16 @@ export default {
 <template>
   <div class="flex">
     <div
-      class="menu sidebar bg-fatuo p-[20px] h-screen  top-0"
+      class="menu sidebar bg-fatuo p-[20px] h-screen top-0"
       :class="{ isActive }"
     >
+      <label class="drawer-overlay" @click="isActive = !isActive"></label>
+      <button
+        class="btn glass w-12 h-12 rounded-full absolute top-2 right-2 lg:hidden block"
+        @click="isActive = !isActive"
+      >
+        <i class="fas fa-times"></i>
+      </button>
       <div class="logo">
         <img src="../assets/fatou.svg" alt="" />
       </div>
@@ -99,9 +106,9 @@ export default {
       <div
         class="navbar bg-base-100 sticky top-0 z-[999] h-[100px] p-[26px_25px_!important]"
       >
-      <div class="navbarLogo" :class="{isActive}">
-        <img src="../assets/fatou.svg" alt="" />
-      </div>
+        <div class="navbarLogo" :class="{ isActive }">
+          <img src="../assets/fatou.svg" alt="" />
+        </div>
         <label
           tabindex="0"
           class="btn btn-ghost btn-circle"
@@ -122,10 +129,10 @@ export default {
             />
           </svg>
         </label>
-        <div class="flex-1">
-          <span class="text-[24px] font-medium">User Overview</span>
+        <div class="flex-1 md:block hidden">
+          <span class="text-[24px] font-medium capitalize">{{ $route.name }} Overview</span>
         </div>
-        <div class="flex-none">
+        <div class="md:flex-none flex-1 justify-end">
           <div class="dropdown profile-dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost avatar flex gap-4">
               <div class="w-12 h-12 rounded-full">
@@ -163,36 +170,90 @@ export default {
 .bg-fatuo {
   background-color: #077685;
 }
-.sidebar{
-   width: 240px;
+.sidebar {
+  width: 240px;
   overflow: hidden;
-  position:fixed;
+  position: fixed;
   z-index: 1000;
-  flex:1 0;
   margin-left: -240px;
-   transition : 0.3s all;
+  transition: 0.3s all;
+  height: 100%;
+  flex: 0 0 240px;
+
   &.isActive {
     margin-left: 0;
+    @media (max-width: 1023px) {
+      margin-left: -240px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    &:not(.isActive) {
+      margin-left: 0;
+      .drawer-overlay {
+        visibility: visible;
+        opacity: 0.3;
+        cursor: pointer;
+        --tw-bg-opacity: 1;
+        background-color: hsl(var(--nf, var(--n)) / var(--tw-bg-opacity));
+        transition-property: all;
+        transition-duration: 0.3s;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+      }
+    }
   }
 }
 .main-wrapper {
-    flex: 1 0;
-     background-color: #f0f4f5;
-     transition : 0.3s all;
-     margin-left: 0;
-     width: 100%;
+  background-color: #f0f4f5;
+  transition: 0.3s all;
+  margin-left: 0;
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100vh;
+
   &.isActive {
-     margin-left: 240px;
-      
+    margin-left: 240px;
+    @media (max-width: 1023px) {
+      margin-left: 0;
+    }
   }
 
-  .navbar{
-    transition : 0.3s all;
+  .navbar {
+    transition: 0.3s all;
   }
 }
 
-.menu li > :where(a:active) {
-  background-color: transparent !important;
+.menu {
+  ul {
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px; background-color: transparent;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #09acc2;
+    }
+  }
+  li > :where(a:active) {
+    background-color: transparent !important;
+  }
 }
 .menu li {
   margin-bottom: 15px;
@@ -222,15 +283,30 @@ export default {
     color: #333;
   }
 }
-.navbarLogo{
-   display:block;
-   transition : 0.5s all;
-   max-width: 100%;
-    opacity: 1;
-  &.isActive{
+.navbarLogo {
+  display: block;
+  transition: 0.5s all;
+  max-width: 100%;
+  opacity: 1;
+  &.isActive {
     max-width: 0;
-     transition : 0.1s all;
-     opacity: 0;
+    transition: 0.1s all;
+    opacity: 0;
+  }
+
+  @media (max-width: 1023px) {
+    max-width: 100px;
+    &.isActive {
+      max-width: 100px;
+      transition: 0.1s all;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    img {
+      max-width: 60px;
+    }
   }
 }
 </style>

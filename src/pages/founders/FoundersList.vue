@@ -11,19 +11,14 @@ export default {
             rows: [],
             cols: [
                 {
-                    text: 'FirstName',
+                    text: 'ID',
                     classses: '',
-                    dataField: 'firstName'
+                    dataField: 'id'
                 },
                 {
-                    text: 'lastName',
+                    text: 'Company Name',
                     classses: '',
                     dataField: 'lastName'
-                },
-                {
-                    text: 'User Type',
-                    classses: '',
-                    dataField: 'sds'
                 },
                 {
                     text: 'Location',
@@ -31,15 +26,21 @@ export default {
                     dataField: 'sds'
                 },
                 {
-                    text: 'Status',
+                    text: 'Gender',
+                    classses: '',
+                    dataField: 'sds'
+                },
+                {
+                    text: 'Added by',
                     classses: '',
                     dataField: '',
                     default: 'Active'
                 },
                 {
-                    text: 'Reason For Joining',
+                    text: 'Status',
                     classses: '',
-                    dataField: 'reasonForJoining',
+                    dataField: '',
+                    default: 'Active'
                 },
 
 
@@ -208,7 +209,7 @@ export default {
                          </div>
                          <div class="col-span-1"> 
                              <h2 class="card-title mb-0">200</h2>
-                            <p>Totals Recruiters</p>
+                            <p>Total Users</p>
                         </div>
                      </div>
                    
@@ -222,7 +223,7 @@ export default {
                          </div>
                          <div class="col-span-1"> 
                              <h2 class="card-title mb-0">200</h2>
-                            <p>Total Hiring Managers</p>
+                            <p>Total Users</p>
                         </div>
                      </div>
                    
@@ -236,14 +237,14 @@ export default {
                          </div>
                          <div class="col-span-1"> 
                              <h2 class="card-title mb-0">200</h2>
-                            <p>Total Active</p>
+                            <p>Total Users</p>
                         </div>
                      </div>
                    
                 </div>
             </div>
         </div>
-            <div class="flex gap-[20px] flex-wrap mb-6">
+        <div class="flex gap-[20px] flex-wrap mb-6">
             <div class="left flex gap-[20px_50px] flex-auto items-center sm:flex-nowrap flex-wrap">
                 <div class="search sm:max-w-[300px] relative flex-auto">
                     <input type="search" placeholder="Search Users Name" class="input w-full h-[43px] pl-[61px] input-fatou  focus:border-fatou text-[#7B7B7B] " />
@@ -251,10 +252,10 @@ export default {
                 </div>
                 <div class="select-div sm:max-w-[200px] flex-auto w-full">
                     <select class="select w-full text-[12px] font-[400] text-[#7B7B7B] input-fatou focus:border-fatou h-[43px] min-h-[43px]">
-                        <option class="text-[#7B7B7B]" disabled selected>Select User Type </option>
-                        <option class="text-[#333]">Recruiters</option>
-                        <option class="text-[#333]">Hiring Manager</option>
-                        <option class="text-[#333]">Regular User</option>
+                        <option class="text-[#7B7B7B]" disabled selected>Select Founder</option>
+                        <option class="text-[#333]">Saidatech</option>
+                        <option class="text-[#333]">Fatou</option>
+                        <option class="text-[#333]">Saidatech</option>
                     </select>
                 </div>
                 <div class="button-div">
@@ -263,11 +264,19 @@ export default {
             </div>
 
             <div class="right flex gap-[50px] flex-1 items-center justify-end md:flex-none flex-wrap ">
-                <button class="btn btn-fatou-red border-none w-[100px] min-h-[43px] h-[43px]"  @click="deleteSelected">Delete</button>
-                     <div class="dropdown space-x-1">
-                    <button tabindex="0" class="btn btn-fatou w-[100px] min-h-[43px] h-[43px]">Suspend</button>
+                     <button class="btn btn-fatou w-[100px] min-h-[43px] h-[43px]">Add</button>
+                     <button class="btn btn-fatou w-[100px] min-h-[43px] h-[43px]">Upload</button>
+            </div>
 
-                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 right-0 mt-2">
+        </div>
+        <!-- <div class="flex items-center mb-8">
+            <div class="flex flex-row gap-3">
+                <button class="btn btn-error space-x-1" @click="deleteSelected">Delete</button>
+
+                <div class="dropdown space-x-1">
+                    <button tabindex="0" class="btn btn-info  ">Suspend</button>
+
+                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li class='cursor-pointer' @click="suspendSelected(moment().add(12, 'hours'))">12 Hours</li>
                         <li class='cursor-pointer' @click="suspendSelected(moment().add(2, 'days'))">2 Days</li>
                         <li class='cursor-pointer' @click="suspendSelected(moment().add(5, 'days'))">5 Days</li>
@@ -276,8 +285,7 @@ export default {
                     </ul>
                 </div>
             </div>
-
-        </div>
+        </div> -->
         <div class="overflow-x-auto">
             <table class="table table-zebra w-full">
                 <thead>
@@ -299,12 +307,20 @@ export default {
                                     :checked="row.selected" type="checkbox" class="checkbox" />
                             </label>
                         </th>
-                        <td>{{ row?.firstName }}</td>
+                        <td>{{ row?._id }}</td>
                         <td>{{ row?.lastName }}</td>
                         <td></td>
                         <td>{{renderLocation(row?.address)}}</td>
-                        <td>{{renderSuspended(row?.suspended)}}</td>
-                        <td>{{ renderReasons(row?.reasonForJoining) }}</td>
+                        <td>   
+                            <div class="flex items-center gap-[10px]">
+                                 <img src="https://api.lorem.space/image/face?hash=33791" class="w-[30px] h-[30px] rounded-full object-cover " />
+                                 <span class="text-[14px] font-[300]">Albert Flores</span>
+                            </div>
+                        </td>
+                        
+                        <td :class="renderSuspended(row?.suspended) === 'Active' ?  'text-[#419044]' : 'text-red-600'">
+                            {{renderSuspended(row?.suspended)}}
+                        </td>
                         <td>
                             <button class="btn btn-ghost btn-circle " @click="showRecord(row)">
                                 <img src="../../assets/eye.svg" alt="">
@@ -316,23 +332,26 @@ export default {
                 </tbody>
             </table>
 
-            <div class="btn-group justify-center py-5">
-               <button v-for="(currPage, index) in pagination" v-bind:key="{index}"
+        </div>
+
+  
+            <div class="btn-group flex justify-center py-5">
+                <button v-for="(currPage, index) in pagination" v-bind:key="{index}"
                     :class="{ 'btn btn-ghost bg-[#077685]/[.25] hover:btn-fatou': true, 'btn-active btn-fatou': currPage === page }" @click="onPageChange(currPage)">{{
                     currPage
                     }}
                 </button>
 
             </div>
-        </div>
-
-
         <div :class="{ 'modal': true, 'modal-open': openDetailModal }">
             <div class="modal-box">
 
                 <div v-if="!detailLoading">
-
-                    <h3 class="font-bold text-lg">{{ userData.bio }}</h3>
+                    <div class="flex justify-between">
+                    <img src="../../assets/founder.svg" alt="founder">
+                     <label for="my-modal" @click="openDetailModal = false" class="btn glass w-12 h-12 rounded-full"><i class="fas fa-times text-[#333] text-xl"></i></label>
+                    </div>
+                    <!-- <h3 class="font-bold text-lg">{{ userData.bio }}</h3> -->
 
                     <div class="flex flex-wrap gap-6 items-center">
 
@@ -383,7 +402,7 @@ export default {
                         <div class="form-control w-[48%]">
                             <label class="label">
                                 <span class="label-text">Skills</span>
-                                <p><span v-for="(skill, index) in userData.skills" v-bind:key="{index}">{{ skill.name }}</span></p>
+                                <p><span v-for="(skill, index) in userData.skills">{{ skill.name }}</span></p>
                             </label>
                         </div>
 
@@ -418,11 +437,11 @@ export default {
                         </div>
                     </div>
                 </div>
-
-
-                <div class="modal-action">
-                    <label for="my-modal" @click="openDetailModal = false" class="btn">Close</label>
-                </div>
+              
+                  <div class="text-center" v-if="detailLoading">
+                    <progress class="progress fatou-progress w-56 mx-auto"></progress>
+                  </div>
+                
             </div>
         </div>
     </div>

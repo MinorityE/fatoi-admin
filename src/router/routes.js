@@ -2,6 +2,8 @@ import { createWebHashHistory, createRouter } from "vue-router";
 import store from '../store/index'
 const UserList = () => import("../pages/users/UserList.vue");
 const RequestList = () => import("../pages/requests/RequestList.vue");
+const FoundersList = () => import("../pages/founders/FoundersList.vue");
+const VcsList = () => import("../pages/vcs/VcsList.vue");
 const Login = () => import("../components/Login.vue");
 const Layout = () => import("../pages/Layout.vue");
 
@@ -26,6 +28,22 @@ const routes = [
         path: "/requests",
         name: "requests",
         component: RequestList,
+        meta: {
+          isAuth: true,
+        },
+      },
+      {
+        path: "/founders",
+        name: "founders",
+        component: FoundersList,
+        meta: {
+          isAuth: true,
+        },
+      },
+      {
+        path: "/vcs",
+        name: "vcs",
+        component: VcsList,
         meta: {
           isAuth: true,
         },

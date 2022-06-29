@@ -24,3 +24,108 @@ body {
         line-height: 21px;
     }
 }
+
+.input-fatou {
+
+    &:focus {
+        box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(187 100% 29%);
+    }
+}
+.btn-fatou-red{
+    --tw-border-opacity: 1;
+    background-color: rgb(234 30 30 / var(--tw-border-opacity)) !important;
+    color: #fff;
+    border: 0 !important;
+    outline: 0 !important;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: capitalize;
+
+    &:hover {
+        box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsla(0, 83%, 52%, 1);
+    }
+}
+.border-fatou {
+    --tw-border-opacity: 1;
+    border-color: rgb(7 118 133 / var(--tw-border-opacity));
+}
+
+.btn-fatou {
+    --tw-border-opacity: 1;
+    background-color: rgb(7 118 133 / var(--tw-border-opacity)) !important;
+    color: #fff;
+    border: 0 !important;
+    outline: 0 !important;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: capitalize;
+
+    &:hover {
+        box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(187 100% 29%);
+    }
+}
+
+.cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(23%, 1fr));
+
+    @media screen and (max-width: 767px) {
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+
+        .card-body {
+            >div {
+                flex-direction: column;
+            }
+        }
+    }
+
+    .card {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        background-color: #fff;
+
+        @media screen and (min-width: 768px) {
+            height: 117px;
+        }
+
+        .card-body {
+            padding: var(--padding-card, 1.5rem);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 30px;
+
+            ~p {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 21px;
+            }
+        }
+    }
+}
+
+.fatou-progress:indeterminate:after {
+    --tw-bg-opacity: 1;
+    background-color: rgb(7 118 133/var(--tw-border-opacity)) !important;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -40%;
+    width: 33.333333%;
+    border-radius: var(--rounded-box,1rem);
+    animation: progress-loading 2s infinite ease-in-out;
+}
+
+@keyframes progress-loading {
+    0%{
+        left: -40%;
+    }
+    100%{
+        left: 100%;
+    }
+    
+}

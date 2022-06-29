@@ -146,50 +146,58 @@ export default {
 </script>
 <template>
     <div>
-        <div class="flex flex-wrap gap-3 mb-8">
+       <div class="grid cards-grid   gap-[30px] mb-8 mt-[50px]">
 
-            <div class="card w-96  bg-base-100 shadow-md">
+            <div class="card">
                 <div class="card-body">
-                     <div class="grid grid-cols-3 gap-4">
-                         <div class="col-span-1"><i class="fa-solid fa-users text-7xl "></i></div>
+                     <div class="flex  gap-6 items-center">
+                         <div class="col-span-1">
+                             <img src="../../assets/userIcon.svg" alt="">
+                         </div>
                          <div class="col-span-1"> 
-                             <h2 class="card-title">200</h2>
+                             <h2 class="card-title mb-0">200</h2>
                             <p>Total Users</p>
                         </div>
                      </div>
                    
                 </div>
             </div>
-            <div class="card w-96  bg-base-100 shadow-md">
+            <div class="card">
                 <div class="card-body">
-                     <div class="grid grid-cols-3 gap-4">
-                         <div class="col-span-1"><i class="fa-solid fa-users text-7xl "></i></div>
+                     <div class="flex gap-6 items-center">
+                         <div class="col-span-1">
+                             <img src="../../assets/userIcon.svg" alt="">
+                         </div>
                          <div class="col-span-1"> 
-                             <h2 class="card-title">200</h2>
+                             <h2 class="card-title mb-0">200</h2>
                             <p>Total Users</p>
                         </div>
                      </div>
                    
                 </div>
             </div>
-            <div class="card w-96  bg-base-100 shadow-md">
+            <div class="card">
                 <div class="card-body">
-                     <div class="grid grid-cols-3 gap-4">
-                         <div class="col-span-1"><i class="fa-solid fa-users text-7xl "></i></div>
+                     <div class="flex gap-6 items-center">
+                         <div class="col-span-1">
+                              <img src="../../assets/userIcon.svg" alt="">
+                         </div>
                          <div class="col-span-1"> 
-                             <h2 class="card-title">200</h2>
+                             <h2 class="card-title mb-0">200</h2>
                             <p>Total Users</p>
                         </div>
                      </div>
                    
                 </div>
             </div>
-            <div class="card w-96  bg-base-100 shadow-md">
+            <div class="card">
                 <div class="card-body">
-                     <div class="grid grid-cols-3 gap-4">
-                         <div class="col-span-1"><i class="fa-solid fa-users text-7xl "></i></div>
+                     <div class="flex gap-6 items-center">
+                         <div class="col-span-1">
+                             <img src="../../assets/userIcon.svg" alt="">
+                         </div>
                          <div class="col-span-1"> 
-                             <h2 class="card-title">200</h2>
+                             <h2 class="card-title mb-0">200</h2>
                             <p>Total Users</p>
                         </div>
                      </div>
@@ -238,13 +246,12 @@ export default {
 
                 </tbody>
             </table>
-
-            <div class="btn-group">
-                <button 
-                    v-for="(currPage, index) in pagination"
-                        :class="{ 'btn': true, 'btn-active': currPage === page }" @click="onPageChange(currPage)">{{
-                        currPage
-                    }}</button>
+            <div class="btn-group flex justify-center py-5">
+                <button v-for="(currPage, index) in pagination" v-bind:key="{index}"
+                    :class="{ 'btn btn-ghost bg-[#077685]/[.25] hover:btn-fatou': true, 'btn-active btn-fatou': currPage === page }" @click="onPageChange(currPage)">{{
+                    currPage
+                    }}
+                </button>
 
             </div>
         </div>
