@@ -4,6 +4,8 @@ const UserList = () => import("../pages/users/UserList.vue");
 const RequestList = () => import("../pages/requests/RequestList.vue");
 const FoundersList = () => import("../pages/founders/FoundersList.vue");
 const VcsList = () => import("../pages/vcs/VcsList.vue");
+const JobsList = () => import("../pages/job/JobsList.vue");
+const BuzzList = () => import("../pages/buzz/BuzzList.vue");
 const Login = () => import("../components/Login.vue");
 const Layout = () => import("../pages/Layout.vue");
 
@@ -48,6 +50,23 @@ const routes = [
           isAuth: true,
         },
       },
+      {
+        path: "/jobs",
+        name: "job",
+        component: JobsList,
+        meta: {
+          isAuth: true,
+        },
+      },
+
+      {
+        path: "/buzzs",
+        name: "buzz",
+        component: BuzzList,
+        meta: {
+          isAuth: true,
+        },
+      },
     ]
   },
   {
@@ -58,8 +77,8 @@ const routes = [
       isAuth: false,
     },
   },
-  
-  
+
+
 
 
 ];

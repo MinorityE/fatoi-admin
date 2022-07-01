@@ -248,7 +248,7 @@ export default {
                     <img src="../../assets/search.svg" alt="search" class="absolute left-[19px] top-[12px] ">
                 </div>
                 <div class="select-div sm:max-w-[200px] flex-auto w-full">
-                    <select class="select w-full text-[12px] font-[400] text-[#7B7B7B] input-fatou focus:border-fatou h-[43px] min-h-[43px]">
+                    <select class="select w-full text-[14px] font-[400] text-[#7B7B7B] input-fatou focus:border-fatou h-[43px] min-h-[43px]">
                         <option class="text-[#7B7B7B]" disabled selected>Select VC</option>
                         <option class="text-[#333]">Fatou</option>
                         <option class="text-[#333]">Fatou</option>
@@ -266,23 +266,6 @@ export default {
             </div>
 
         </div>
-        <!-- <div class="flex items-center mb-8">
-            <div class="flex flex-row gap-3">
-                <button class="btn btn-error space-x-1" @click="deleteSelected">Delete</button>
-
-                <div class="dropdown space-x-1">
-                    <button tabindex="0" class="btn btn-info  ">Suspend</button>
-
-                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li class='cursor-pointer' @click="suspendSelected(moment().add(12, 'hours'))">12 Hours</li>
-                        <li class='cursor-pointer' @click="suspendSelected(moment().add(2, 'days'))">2 Days</li>
-                        <li class='cursor-pointer' @click="suspendSelected(moment().add(5, 'days'))">5 Days</li>
-                        <li class='cursor-pointer' @click="suspendSelected(moment().add(1, 'months'))">1 Months</li>
-                        <li class='cursor-pointer' @click="suspendSelected(moment().add(2, 'months'))">2 Months</li>
-                    </ul>
-                </div>
-            </div>
-        </div> -->
         <div class="overflow-x-auto">
             <table class="table table-zebra w-full">
                 <thead>
@@ -340,101 +323,71 @@ export default {
 
             </div>
         <div :class="{ 'modal': true, 'modal-open': openDetailModal }">
-            <div class="modal-box">
+           <div class="modal-box md:max-w-[720px] p-[50px]">
 
                 <div v-if="!detailLoading">
-
-                    <h3 class="font-bold text-lg">{{ userData.bio }}</h3>
-
-                    <div class="flex flex-wrap gap-6 items-center">
-
-
-                        <div class="form-control w-[48%]">
-                            <label class="label ">
-                                <span class="label-text">First Name</span>
-                                <p>{{ userData.firstName }}</p>
-                            </label>
-
-                        </div>
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Contact</span>
-                                <p>{{ userData.phone }}</p>
-                            </label>
-
-                        </div>
-
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Last Name</span>
-                                <p>{{ userData.lastName }}</p>
-                            </label>
-
-                        </div>
-
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Company</span>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Industry</span>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Education</span>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Skills</span>
-                                <p><span v-for="(skill, index) in userData.skills">{{ skill.name }}</span></p>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Work Experience</span>
-                            </label>
-                        </div>
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Linked In</span>
-                                <p>{{ userData.linkedInUrl }}</p>
-                            </label>
-                        </div>
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Email Address</span>
-                                <p>{{ userData.email }}</p>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Founder Name</span>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">VC Name</span>
-                            </label>
-                        </div>
+                    <div class="flex justify-end absolute inset-[10px] h-12 w-12 ml-auto">
+                     <label for="my-modal" @click="openDetailModal = false" 
+                     class="btn glass btn-ghost hover:btn-fatou hover:text-[#fff] text-[#333] w-12 p-[3px] h-12 rounded-full text-[16px]"><i class="fas fa-times  "></i></label>
                     </div>
-                </div>
 
+                    
 
-                <div class="modal-action">
-                    <label for="my-modal" @click="openDetailModal = false" class="btn">Close</label>
+                 <div class="mb-[50px] text-center">
+                    <img src="https://api.lorem.space/image/face?hash=33791" class="w-[100px] h-[100px] rounded-[50%] object-cover mb-[10px] mx-auto" alt="user">
+                    <h4 class="text-[20px] font-normal">Albert Flores</h4>
+                 </div>
+
+                 <div class="flex gap-[24px_50px] flex-wrap justify-between">
+                    <div class="user-info">
+                        <label>Vc Name</label>
+                        <h4>{{userData.firstName}}</h4>
+                    </div>
+                    <div class="user-info">
+                        <label>Investment Stage</label>
+                        <h4>{{userData.phone ? userData.phone : "Not Added"}}</h4>
+                    </div>
+
+                    <div class="user-info">
+                        <label>Country Of Investment</label>
+                        <h4>{{userData.lastName}}</h4>
+                    </div>
+                    <div class="user-info">
+                        <label>Investment Type</label>
+                        <h4>{{userData.company ?? "Not Added"}}</h4>
+                    </div>
+
+                    <div class="user-info">
+                        <label>Average Check</label>
+                        <h4>{{userData.email}}</h4>
+                    </div>
+                    <div class="user-info">
+                        <label>Invested Categories</label>
+                        <h4>{{userData.industry ?? "Not Added"}}</h4>
+                    </div>
+
+                    <div class="user-info">
+                        <label>Linkedin</label>
+                        <h4>{{userData.education ?? "Not Added"}}</h4>
+                    </div>
+
+                    <div class="user-info">
+                        <label>Website</label>
+                        <h4>{{userData.experince ?? "Not Added"}}</h4>
+                    </div>
+                 </div>
+                   <div class="description">
+                    <h4>About Us</h4>
+                    <p  >{{userData.bio ?? ""}}</p>
+
+                 </div>
+               
                 </div>
+              
+                  <div class="text-center" v-if="detailLoading">
+                    <progress class="progress fatou-progress w-56 mx-auto"></progress>
+                  </div>
+                
             </div>
         </div>
     </div>

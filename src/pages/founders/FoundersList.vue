@@ -251,7 +251,7 @@ export default {
                     <img src="../../assets/search.svg" alt="search" class="absolute left-[19px] top-[12px] ">
                 </div>
                 <div class="select-div sm:max-w-[200px] flex-auto w-full">
-                    <select class="select w-full text-[12px] font-[400] text-[#7B7B7B] input-fatou focus:border-fatou h-[43px] min-h-[43px]">
+                    <select class="select w-full text-[14px] font-[400] text-[#7B7B7B] input-fatou focus:border-fatou h-[43px] min-h-[43px]">
                         <option class="text-[#7B7B7B]" disabled selected>Select Founder</option>
                         <option class="text-[#333]">Saidatech</option>
                         <option class="text-[#333]">Fatou</option>
@@ -343,99 +343,67 @@ export default {
                 </button>
 
             </div>
-        <div :class="{ 'modal': true, 'modal-open': openDetailModal }">
-            <div class="modal-box">
+        <div :class="{ 'modal modal-middle': true, 'modal-open': openDetailModal }">
+            <div class="modal-box md:max-w-[720px] p-[50px]">
 
                 <div v-if="!detailLoading">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between modal-header">
                     <img src="../../assets/founder.svg" alt="founder">
-                     <label for="my-modal" @click="openDetailModal = false" class="btn glass w-12 h-12 rounded-full"><i class="fas fa-times text-[#333] text-xl"></i></label>
+                     <label for="my-modal" @click="openDetailModal = false" class="btn glass btn-ghost hover:btn-fatou hover:text-[#fff] text-[#333] w-12 p-[3px] h-12 rounded-full text-[16px]"><i class="fas fa-times  "></i></label>
                     </div>
-                    <!-- <h3 class="font-bold text-lg">{{ userData.bio }}</h3> -->
-
-                    <div class="flex flex-wrap gap-6 items-center">
-
-
-                        <div class="form-control w-[48%]">
-                            <label class="label ">
-                                <span class="label-text">First Name</span>
-                                <p>{{ userData.firstName }}</p>
-                            </label>
-
-                        </div>
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Contact</span>
-                                <p>{{ userData.phone }}</p>
-                            </label>
-
-                        </div>
-
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Last Name</span>
-                                <p>{{ userData.lastName }}</p>
-                            </label>
-
-                        </div>
-
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Company</span>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Industry</span>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Education</span>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Skills</span>
-                                <p><span v-for="(skill, index) in userData.skills">{{ skill.name }}</span></p>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Work Experience</span>
-                            </label>
-                        </div>
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Linked In</span>
-                                <p>{{ userData.linkedInUrl }}</p>
-                            </label>
-                        </div>
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Email Address</span>
-                                <p>{{ userData.email }}</p>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">Founder Name</span>
-                            </label>
-                        </div>
-
-                        <div class="form-control w-[48%]">
-                            <label class="label">
-                                <span class="label-text">VC Name</span>
-                            </label>
-                        </div>
+                 <div class="flex gap-[24px_50px] flex-wrap justify-between">
+                    <div class="user-info">
+                        <label>Founder Name</label>
+                        <h4>Saidatech</h4>
                     </div>
+                    <div class="user-info">
+                        <label>Added By</label>
+                        <h4>Albert Flores</h4>
+                    </div>
+
+                    <div class="user-info">
+                        <label>Email</label>
+                        <h4>saidatech@gmail.com</h4>
+                    </div>
+                    <div class="user-info">
+                        <label>Industry</label>
+                        <h4>Internet</h4>
+                    </div>
+
+                    <div class="user-info">
+                        <label>State</label>
+                        <h4>New York</h4>
+                    </div>
+                    <div class="user-info">
+                        <label>Sector</label>
+                        <h4>Devops</h4>
+                    </div>
+
+                    <div class="user-info">
+                        <label>Year</label>
+                        <h4>2022</h4>
+                    </div>
+                    <div class="user-info">
+                        <label>Funding Round</label>
+                        <h4>Private</h4>
+                    </div>
+
+                       <div class="user-info">
+                        <label>Linkedin</label>
+                        <h4>Linkedin</h4>
+                    </div>
+                    <div class="user-info">
+                        <label>Website</label>
+                        <h4>www.website.com</h4>
+                    </div>
+                 </div>
+
+                 <div class="description">
+                    <h4>About Company</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam lectus magna fringilla,</p>
+                 </div>
+
+               
                 </div>
               
                   <div class="text-center" v-if="detailLoading">

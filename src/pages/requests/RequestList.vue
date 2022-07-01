@@ -205,17 +205,30 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-10 gap-4 mb-8">
-            <div class="col-span-8"></div>
-            <div class="flex flex-row gap-3">
-                <button class="btn btn-error space-x-1" @click="changeStatusBulk('approved')" >Accept</button>
-
-                <div class="dropdown space-x-1">
-                    <button tabindex="0" class="btn btn-info  " @click="changeStatusBulk('rejected')">Reject</button>
-
-                   
+        <div class="flex gap-[20px] flex-wrap mb-6">
+            <div class="left flex gap-[20px_50px] flex-auto items-center sm:flex-nowrap flex-wrap">
+                <div class="search sm:max-w-[300px] relative flex-auto">
+                    <input type="search" placeholder="Search Users Name" class="input w-full h-[43px] pl-[61px] input-fatou  focus:border-fatou text-[#7B7B7B] " />
+                    <img src="../../assets/search.svg" alt="search" class="absolute left-[19px] top-[12px] ">
+                </div>
+                <div class="select-div sm:max-w-[200px] flex-auto w-full">
+                    <select class="select w-full text-[14px] font-[400] text-[#7B7B7B] input-fatou focus:border-fatou h-[43px] min-h-[43px]">
+                        <option class="text-[#7B7B7B]" disabled selected>Select Request Type</option>
+                        <option class="text-[#333]">Recruiters Confirmation</option>
+                        <option class="text-[#333]">Hiring Manager Confirmation</option>
+                        <option class="text-[#333]">VCs Confirmation</option>
+                    </select>
+                </div>
+                <div class="button-div">
+                     <button class="btn btn-fatou w-[100px] min-h-[43px] h-[43px]">Filter</button>
                 </div>
             </div>
+
+            <div class="right flex gap-[50px] flex-1 items-center justify-end md:flex-none flex-wrap ">
+                     <button class="btn btn-fatou w-[100px] min-h-[43px] h-[43px]"  @click="changeStatusBulk('approved')">Accept</button>
+                     <button class="btn btn-fatou-red w-[100px] min-h-[43px] h-[43px] p-[12px_7px]"  @click="changeStatusBulk('rejected')">Reject</button>
+            </div>
+
         </div>
         <div class="overflow-x-auto">
             <table class="table table-zebra w-full">

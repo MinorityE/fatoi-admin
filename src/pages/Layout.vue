@@ -130,7 +130,7 @@ export default {
           </svg>
         </label>
         <div class="flex-1 md:block hidden">
-          <span class="text-[24px] font-medium capitalize">{{ $route.name }} Overview</span>
+          <span class="text-[24px] font-medium capitalize">{{ $route.name }} {{ $route.name === "buzz" ? "Details" : "Overview"}}</span>
         </div>
         <div class="md:flex-none flex-1 justify-end">
           <div class="dropdown profile-dropdown dropdown-end">
@@ -144,8 +144,8 @@ export default {
               tabindex="0"
               class="menu menu-compact dropdown-content bg-base-100 mt-3 p-2 shadow rounded-box w-52"
             >
-              <li><a class="to-base-100">Settings</a></li>
-              <li><a>Logout</a></li>
+              <li><a class="to-base-100 text-xs">Settings</a></li>
+              <li><a  @click="logout">Logout</a></li>
             </ul>
           </div>
           <button class="btn btn-ghost btn-circle ml-4">

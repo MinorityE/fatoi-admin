@@ -31,9 +31,8 @@ body {
         box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(187 100% 29%);
     }
 }
-.btn-fatou-red{
-    --tw-border-opacity: 1;
-    background-color: rgb(234 30 30 / var(--tw-border-opacity)) !important;
+
+%btn {
     color: #fff;
     border: 0 !important;
     outline: 0 !important;
@@ -41,26 +40,26 @@ body {
     font-size: 12px;
     line-height: 18px;
     text-transform: capitalize;
+    --tw-border-opacity: 1;
+}
+
+.btn-fatou-red {
+    background-color: rgb(234 30 30 / var(--tw-border-opacity)) !important;
+    @extend %btn;
 
     &:hover {
         box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsla(0, 83%, 52%, 1);
     }
 }
+
 .border-fatou {
     --tw-border-opacity: 1;
     border-color: rgb(7 118 133 / var(--tw-border-opacity));
 }
 
 .btn-fatou {
-    --tw-border-opacity: 1;
     background-color: rgb(7 118 133 / var(--tw-border-opacity)) !important;
-    color: #fff;
-    border: 0 !important;
-    outline: 0 !important;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    text-transform: capitalize;
+    @extend %btn;
 
     &:hover {
         box-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(187 100% 29%);
@@ -116,16 +115,159 @@ body {
     bottom: 0;
     left: -40%;
     width: 33.333333%;
-    border-radius: var(--rounded-box,1rem);
+    border-radius: var(--rounded-box, 1rem);
     animation: progress-loading 2s infinite ease-in-out;
 }
 
 @keyframes progress-loading {
-    0%{
-        left: -40%;
-    }
-    100%{
+
+    100% {
         left: 100%;
     }
-    
+
+}
+
+%heading {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 15px;
+}
+
+.user-info {
+    flex: 0 0 250px;
+    max-width: 250px;
+
+    @media screen and (max-width: 720px) {
+        flex: 1 1 100%;
+
+    }
+
+    label {
+        @extend %heading;
+        display: block;
+    }
+
+    h4 {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 30px;
+        border-bottom: 1px solid rgba(142, 142, 142, 0.8);
+        color: #000000;
+        padding-bottom: 12px;
+        overflow-y: hidden;
+        white-space: nowrap;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+            height: 6px;
+            cursor: pointer;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #d1cdcd;
+            border-radius: 20px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #077685;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+.description {
+    margin-top: 20px;
+
+    h4,
+    p {
+        @extend %heading;
+        font-weight: 400;
+    }
+
+    p {
+        border-bottom: 1px solid rgba(142, 142, 142, 0.8);
+        padding-bottom: 12px;
+    }
+}
+
+.modal-middle {
+    align-items: center;
+
+    .modal-header {
+        margin-bottom: 30px;
+    }
+
+    .modal-box {
+        &::-webkit-scrollbar {
+            width: 4px;
+            height: 6px;
+            cursor: pointer;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #d1cdcd;
+            border-radius: 20px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #077685;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            max-height: 100vh;
+            border-radius: 0;
+
+            .modal-header {
+                position: sticky;
+                top: 0;
+                z-index: 5;
+                background-color: #fff;
+            }
+        }
+    }
+}
+
+.progress-blue {
+    color: #3649F8 !important;
+
+    &::-webkit-progress-value {
+        background-color: #3649F8 !important;
+    }
+
+    &::-moz-progress-bar {
+        background: #3649F8 !important;
+    }
+}
+
+.progress-red {
+    color: #FF8484 !important;
+
+    &::-webkit-progress-value {
+        background-color: #FF8484 !important;
+    }
+
+    &::-moz-progress-bar {
+        background: #FF8484 !important;
+    }
+}
+
+.progress-yellow {
+    color:
+        #F49A46 !important;
+
+    &::-webkit-progress-value {
+        background-color:
+            #F49A46 !important;
+    }
+
+    &::-moz-progress-bar {
+        background:
+            #F49A46 !important;
+    }
 }
