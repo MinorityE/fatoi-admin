@@ -1,6 +1,6 @@
 <script>
 
-import userService from '../../services/user.service'
+import vcService from '../../services/vc.service'
 import moment from 'moment'
 import Swal from 'sweetalert2'
 
@@ -54,7 +54,7 @@ export default {
         }
     },
     created() {
-        this.getUsers()
+        this.getVcs()
     },
     watch: {
 
@@ -72,11 +72,12 @@ export default {
         },
     },
     methods: {
-        getUsers() {
-            userService.getUsers({
+        getVcs() {
+            vcService.getVcs({
                 limit: this.limit,
                 page: this.page
             }).then(({ data }) => {
+                console.log(data)
                 this.rows = data.results.map((r) => ({ ...r, selected: false }))
                 this.totalPages = data.totalPages,
                     this.page = data.page
@@ -170,12 +171,7 @@ export default {
         renderReasons(reason) {
             return reason.toString()
         },
-        renderLocation(address){
-            if(address.state && address.city){
-                return address.state+', '+address.city
-            }
-            return ''
-        }
+        
 
     }
 }
@@ -287,9 +283,9 @@ export default {
                                     :checked="row.selected" type="checkbox" class="checkbox" />
                             </label>
                         </th>
-                        <td>{{ row?.lastName }}</td>
-                        <td></td>
-                        <td>{{renderLocation(row?.address)}}</td>
+                        <td>{{ row?.name }}</td>
+                        <td>{{row?.location?.country}}</td>
+                        <td>{{row?.location?.state}}</td>
                         <td>   
                             <div class="flex items-center gap-[10px]">
                                  <img src="https://api.lorem.space/image/face?hash=33791" class="w-[30px] h-[30px] rounded-full object-cover " />

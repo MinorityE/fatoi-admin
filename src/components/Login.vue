@@ -12,7 +12,7 @@ export default {
              
               this.userLogin({email:'faizan@karigar.pk',password:'admin123'}).then((result) => {
                   console.log('first')
-              this.$router.push({path:"/users"})
+              this.$router.push({path:"users"})
             }).catch((err) => {
                 console.log(err)
             });
