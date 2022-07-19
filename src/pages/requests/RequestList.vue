@@ -3,6 +3,7 @@
 
 import moment from 'moment'
 import accessRequestService from '../../services/accessRequest.service'
+import notificationService from '../../services/notification.service'
 import Swal from 'sweetalert2'
 
 export default {
@@ -121,11 +122,23 @@ export default {
                     return 'Vc\'sConfirmation'
                 }
         },
-        changeStatus(row,status){
-
+        changeStatus(row,status='rejected'){
+            console.log(row)
+            const notificationData={
+                user:row.user._id,
+                title:'Access Request Approval',
+                description:status==='approved'?'Your request has been approved!':'Your request has been rejected!',
+                type:'RecruiterApproval'
+            }
+           
                 accessRequestService.updateBulkStatus([row._id],status).then((res)=>{
+                    notificationService.createNotification(notificationData).then((res)=>{
+                        console.log(res)
+                    }).catch((err)=>{
+                        console.log(err)
+                    })
                     this.getUsers()
-    }).catch((err)=>{
+                }).catch((err)=>{
                     console.log(err)
                 })
         },
