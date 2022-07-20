@@ -93,6 +93,14 @@ export default {
           </router-link>
         </li>
         <li>
+          <router-link to="/reports">
+            <div class="icon">
+              <img src="../assets/buzz.svg" alt="" />
+            </div>
+            Reports
+          </router-link>
+        </li>
+        <li>
           <router-link to="/" @click="logout">
             <div class="icon">
               <img src="../assets/request.svg" alt="" />

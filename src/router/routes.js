@@ -6,6 +6,7 @@ const FoundersList = () => import("../pages/founders/FoundersList.vue");
 const VcsList = () => import("../pages/vcs/VcsList.vue");
 const JobsList = () => import("../pages/job/JobsList.vue");
 const BuzzList = () => import("../pages/buzz/BuzzList.vue");
+const ReportList = () => import("../pages/reports/ReportList.vue");
 const Login = () => import("../components/Login.vue");
 const Layout = () => import("../pages/Layout.vue");
 
@@ -67,6 +68,15 @@ const routes = [
           isAuth: true,
         },
       },
+      {
+        path: "/reports",
+        name: "reports",
+        component: ReportList,
+        meta: {
+          isAuth: true,
+        },
+      },
+      
     ]
   },
   {
