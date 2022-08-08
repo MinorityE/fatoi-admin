@@ -16,7 +16,7 @@ class ReportService{
                 }
             })
         } catch (error) {
-            return error
+            throw new Error(error)
             console.log(error)
         }
     }
@@ -33,7 +33,7 @@ class ReportService{
              })
         } catch (error) {
             console.log(error)
-            return error
+            throw new Error(error)
         }
 
     }

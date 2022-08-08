@@ -18,7 +18,7 @@ class AccessRequestService{
             })
         } catch (error) {
             console.log(error)
-            return error
+            throw new Error(error)
         }
 
     }
@@ -30,7 +30,7 @@ class AccessRequestService{
              )
          } catch (error) {
              console.log(error)
-             return error
+             throw new Error(error)
          }
     }
     

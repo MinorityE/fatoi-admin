@@ -16,7 +16,7 @@ class VcService{
                 }
             })
         } catch (error) {
-            return error
+            throw new Error(error)
             console.log(error)
         }
 

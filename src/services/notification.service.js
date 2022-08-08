@@ -12,7 +12,7 @@ class NotificationService{
            data, 
            { headers : authHeader()} )
         } catch (error) {
-            return error
+            throw new Error(error)
             console.log(error)
         }
 

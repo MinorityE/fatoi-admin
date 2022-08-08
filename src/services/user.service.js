@@ -16,7 +16,8 @@ class UserService{
                 }
             })
         } catch (error) {
-            return error
+            throw new Error(error)
+          
             console.log(error)
         }
 
@@ -26,7 +27,7 @@ class UserService{
            return await this.request.get(`/users/${id}`, 
             {  headers : authHeader() })
         } catch (error) {
-            return error
+            throw new Error(error)
             console.log(error)
         }
 
@@ -41,7 +42,7 @@ class UserService{
                 }
              })
         } catch (error) {
-            return error
+            throw new Error(error)
             console.log(error)
         }
 
@@ -57,7 +58,7 @@ class UserService{
                 headers : authHeader(),
              })
         } catch (error) {
-            return error
+            throw new Error(error)
             console.log(error)
         }
 
