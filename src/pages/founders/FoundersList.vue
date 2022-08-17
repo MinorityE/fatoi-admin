@@ -43,11 +43,11 @@ export default {
 
 
 
-            genders: [
-                { name: 'Female', value: 'female' },
-                { name: 'Male', value: 'male' },
-                { name: 'Other', value: 'other' }
-            ],
+            // genders: [
+            //     { name: 'Female', value: 'female' },
+            //     { name: 'Male', value: 'male' },
+            //     { name: 'Other', value: 'other' }
+            // ],
             foundingRounds: [
                 'Private',
                 'Angel',
@@ -65,7 +65,7 @@ export default {
                 industry: 'none',
                 sector: 'none',
                 founded: '',
-                gender: 'gender',
+                // gender: 'gender',
                 employeeCount: '',
                 bio: '',
                 foundingRound: 'Founding Round',
@@ -99,7 +99,7 @@ export default {
                 name: { required: helpers.withMessage('please include a company name', required) },
                 sector: { required: helpers.withMessage('please include a sector', required), },
                 industry: { required: helpers.withMessage('please include a industry', required), },
-                gender: { required: helpers.withMessage('please include a gender', required), },
+                // gender: { required: helpers.withMessage('please include a gender', required), },
                 founded: { required: helpers.withMessage('please include a year founded', required), },
                 foundingRound: { required: helpers.withMessage('please include a founding round', required), },
                 employeeCount: { required: helpers.withMessage('please include an employee number', required), numeric, },
@@ -205,6 +205,7 @@ export default {
         },
         changeStatus(row, status) {
             this.changeStatusCall([row._id], status)
+
         },
         changeStatusBulk(status) {
             const ids = this.selectedRows.map((r) => r._id)
@@ -213,7 +214,8 @@ export default {
         changeStatusCall(ids, status) {
             this.$swal.showLoading()
             founderService.updateBulkStatus(ids, status).then((res) => {
-                this.$swal('Approved', 'Founders have been approved ', 'success');
+                if(status) this.$swal('Approved', 'Founders have been approved ', 'success');
+                if(!status) this.$swal('Declined', 'Founders request for claim has been declined ', 'success');
                 this.getNotApproved()
             }).catch((err) => {
                 this.$swal('Opps!', 'Something went wrong ', 'error');
@@ -226,14 +228,14 @@ export default {
             this.founderForm.logo = files[0];
             if (!files.length) return;
         },
-        setGender(e, gender) {
-            const isChecked = e.target.checked
-            if (isChecked) {
-                this.v$.founderForm.gender.$model = gender.value
-            } else {
-                this.v$.founderForm.gender.$model = null
-            }
-        },
+        // setGender(e, gender) {
+        //     const isChecked = e.target.checked
+        //     if (isChecked) {
+        //         this.v$.founderForm.gender.$model = gender.value
+        //     } else {
+        //         this.v$.founderForm.gender.$model = null
+        //     }
+        // },
         isRoundSelected(round) {
             return this.v$.founderForm.foundingRound.$model === round ? true : false
         },
@@ -259,7 +261,7 @@ export default {
             formData.append('sector', this.v$.founderForm.sector.$model);
             formData.append('industry', this.v$.founderForm.industry.$model);
             formData.append('founded', this.v$.founderForm.founded.$model);
-            formData.append('gender', this.v$.founderForm.gender.$model);
+            // formData.append('gender', this.v$.founderForm.gender.$model);
             formData.append('user', this.founderForm.user);
             formData.append(
                 'foundingRound',
@@ -407,6 +409,8 @@ export default {
                         <td>
                             <button class="btn btn-outline btn-success"
                                 @click="changeStatus(row, true)">Approve</button>{{ ' ' }}
+                            <button class="btn btn-outline btn-fatou-red"
+                                @click="changeStatus(row, false)">Decline</button>{{ ' ' }}
                         </td>
 
                     </tr>
@@ -504,8 +508,8 @@ export default {
                                     class=" w-full bg-fatou-gray-200 focus:outline-none py-2 px-3 border-fatou-gray-400 border-[1px] rounded-md"
                                     placeholder="Year Founded" />
                             </div>
-                            <div class="w-full md:w-1/2 py-2 px-2">
-                                <!-- gender error -->
+                            <!-- <div class="w-full md:w-1/2 py-2 px-2">
+                            
                                 <div v-if="v$.founderForm.gender.$error" class="text-red-600 text-xs">
                                     {{ '* ' + v$.founderForm.gender.$errors[0].$message }}
                                 </div>
@@ -538,7 +542,7 @@ export default {
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="w-full md:w-1/2 py-2 px-2">
                                 <!-- foundingRound error -->
